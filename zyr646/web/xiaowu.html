@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>RAYRAY's Door</title>
+<style type="text/css">
+/* 设置页面基本样式 */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  color: #FFFFFF;
+  background-color: #FFFFFF;
+  background-image: url(../image/db5dc2ea5135fad5a07db36b84275225.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; /* 背景图片覆盖页面 */
+  background-position: center; /* 背景居中 */
+  background-attachment: fixed; /* 背景固定 */
+}
+/* 链接颜色样式 */
+a:link {
+  color: #1607FD;
+}
+a:active {
+  color: #F70307;
+}
+/* 图片表格居中样式 */
+.mytable {
+  margin: auto;
+  text-align: center;
+}
+.mytable img {
+  border-radius: 8px; /* 图片圆角效果 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 图片阴影效果 */
+}
+/* 单击提示文字样式 */
+.mytable2 {
+  margin: auto;
+  text-align: center;
+  color: #FFFFFF;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif;
+  font-style: italic;
+}
+</style>
+</head>
+
+<body>
+<!-- 图片链接表格 -->
+<table class="mytable" width="613" border="0">
+  <tbody>
+    <tr>
+      <td><img src="../image/CSGO.jpg" alt="CSGO" width="300" height="205" usemap="#Map1"></td>
+      <td><img src="../image/Valorant.jpg" alt="Valorant" width="303" height="205" usemap="#Map2"></td>
+    </tr>
+    <tr>
+      <td><img src="../image/Horizon.jpg" alt="Horizon" width="300" height="205" usemap="#Map3"></td>
+      <td><img src="../image/Minecraft.jpg" alt="Minecraft" width="303" height="205" usemap="#Map4"></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 单击提示 -->
+<table class="mytable2" width="113" border="0">
+  <tbody>
+    <tr>
+      <td><strong><em>单击图片进入</em></strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 返回主页按钮 -->
+<img src="../image/Home.jpg" alt="Home" width="45" height="45" usemap="#Map5">
+
+<!-- 热点区域定义 -->
+<map name="Map1">
+  <area shape="rect" coords="0,0,300,205" href="CSGO.html" target="_self" alt="CSGO">
+</map>
+<map name="Map2">
+  <area shape="rect" coords="0,0,303,205" href="Valorant.html" target="_self" alt="Valorant">
+</map>
+<map name="Map3">
+  <area shape="rect" coords="0,0,300,205" href="Horizon.html" target="_self" alt="Horizon">
+</map>
+<map name="Map4">
+  <area shape="rect" coords="0,0,303,205" href="Minecraft.html" target="_self" alt="Minecraft">
+</map>
+<map name="Map5">
+  <area shape="rect" coords="0,0,45,45" href="index.html" target="_self" alt="返回主页">
+</map>
+</body>
+</html>
+
