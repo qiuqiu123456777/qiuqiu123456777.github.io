@@ -1,0 +1,286 @@
+\documentclass[supercite]{Experimental_Report}
+
+\title{~~~~~~新生实践课~~~~~~}
+\author{张游睿}
+%\coauthor{张三、李四}
+\school{计算机科学与技术学院}
+\classnum{CS2404}
+\stunum{U202414646}
+%\costunum{U202115631、U202115631}
+\instructor{陈加忠} % 该系列实验报告模板由华科大计院教师陈加忠制作
+\date{2024年11月25日}
+
+\usepackage{algorithm, multirow}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{mathtools}
+\usepackage{subcaption}
+\usepackage{xltxtra} %提供了针对XeTeX的改进并且加入了XeTeX的LOGO, 自动调用xunicode宏包(提供Unicode字符宏)
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{pgfplots}
+%\usepackage{enumerate}
+
+\pgfplotsset{compat=1.16}
+
+\newcommand{\cfig}[3]{
+  \begin{figure}[htb]
+    \centering
+    \includegraphics[width=#2\textwidth]{images/#1.tikz}
+    \caption{#3}
+    \label{fig:#1}
+  \end{figure}
+}
+
+\newcommand{\sfig}[3]{
+  \begin{subfigure}[b]{#2\textwidth}
+    \includegraphics[width=\textwidth]{images/#1.tikz}
+    \caption{#3}
+    \label{fig:#1}
+  \end{subfigure}
+}
+
+\newcommand{\xfig}[3]{
+  \begin{figure}[htb]
+    \centering
+    #3
+    \caption{#2}
+    \label{fig:#1}
+  \end{figure}
+}
+
+\newcommand{\rfig}[1]{\autoref{fig:#1}}
+\newcommand{\ralg}[1]{\autoref{alg:#1}}
+\newcommand{\rthm}[1]{\autoref{thm:#1}}
+\newcommand{\rlem}[1]{\autoref{lem:#1}}
+\newcommand{\reqn}[1]{\autoref{eqn:#1}}
+\newcommand{\rtbl}[1]{\autoref{tbl:#1}}
+
+\algnewcommand\Null{\textsc{null }}
+\algnewcommand\algorithmicinput{\textbf{Input:}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicbreak{\textbf{break}}
+\algnewcommand\Break{\algorithmicbreak}
+\algnewcommand\algorithmiccontinue{\textbf{continue}}
+\algnewcommand\Continue{\algorithmiccontinue}
+\algnewcommand{\LeftCom}[1]{\State $\triangleright$ #1}
+
+\newtheorem{thm}{定理}[section]
+\newtheorem{lem}{引理}[section]
+
+\colorlet{shadecolor}{black!15}
+
+\theoremstyle{definition}
+\newtheorem{alg}{算法}[section]
+
+\def\thmautorefname~#1\null{定理~#1~\null}
+\def\lemautorefname~#1\null{引理~#1~\null}
+\def\algautorefname~#1\null{算法~#1~\null}
+
+\begin{document}
+
+\maketitle
+
+\clearpage
+
+\pagenumbering{Roman}
+
+\tableofcontents[level=2]
+
+\clearpage
+
+\pagenumbering{arabic}
+
+\section{网页整体框架}
+
+在我们的日常网络浏览中，大多数网站都采用了总分的设计，以一个导航页为首，这种布局既简洁又直观。用户在浏览丰富多样的内容时，总能轻松地知道自己所处的位置，只需轻点“首页”按钮，就能迅速回到起点。
+
+在我的个人网站上，我也采纳了这种高效的布局方式——首页作为导航，紧接着是其他分页面的链接。无论用户在网站的哪个部分，都可以一键返回首页。
+
+图1-1展示了页面的层次逻辑，括号中是对应的.html文件。index即导航页，还有其他位于 web 文
+件夹下的文件。
+
+\begin{figure}[htb] % here top bottom
+	\begin{center}
+		\includegraphics[width=\textwidth]{images/1-1.pdf}
+		\caption{网页整体框架}
+		\label{fig1-1}
+	\end{center}
+\end{figure}
+
+主要分为以下几个界面：
+
+1）个人主页（索引页）
+
+2）学习 （a）数学 （b）物理 （c）化学 （d）生物
+
+3）游戏 （a）我的世界  （b）地平线五 （c）csgo （d）无畏契约
+
+4）锻炼
+
+5）听歌
+
+
+\newpage
+
+\section{主页设计}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{images/1-2.png}
+		\label{fig1-2}
+	\end{center}
+\end{figure}
+\newpage
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{images/1-3.png}
+		\caption{css部分代码}
+		\label{fig1-3}
+	\end{center}
+\end{figure}
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{images/1-5.png}
+		\caption{主题代码}
+		\label{fig1-5}
+	\end{center}
+\end{figure}
+\newpage
+创建了一个包含导航栏和四个板块（学习、游戏、锻炼、听歌）的个人主页，每个板块都有一张图片和一个链接，以及一个返回寝室主页的按钮。链接运用图片的矩形热点制作。
+
+运用CSS样式定义了页面的整体布局和外观，包括字体、颜色、背景、布局、间距、边框、阴影等视觉效果。通过这些样式，页面被设计成一个具有现代感和良好用户体验的个人主页。
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{images/1-4.png}
+		\caption{主页图片}
+		\label{fig1-4}
+	\end{center}
+\end{figure}
+
+
+
+
+\newpage
+
+\section{分页面设计}
+
+
+\subsection{页面1：学习 }
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{images/2-1.png}
+		\caption{分页面1：学习}
+		\label{fig2-1}
+	\end{center}
+\end{figure}
+
+每个分页面左下都设计了一个返回个人主页的按钮。
+
+页面背景设置为一张图片，图片不重复、覆盖整个页面、居中显示，并且随着页面滚动而固定不动。
+
+使用  mytable  类来居中表格，并设置图片圆角和阴影效果。
+
+使用  mytable2  类来居中显示提示文字，文字颜色为白色，字体样式为斜体，字体家族为一系列无衬线字体。
+
+设计了一个主页图片链接，用户点击可以返回主页。
+
+设计一个宽度为613像素的表格，没有边框，包含两行，每行两个单元格。每个单元格包含一个图片，图片分别链接到数学、物理、化学和生物的资源页面。图片具有圆角和阴影效果，并且可以通过点击进入相应的资源页面。
+\newpage
+\subsection{页面2：游戏}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{images/2-2.png}
+		\caption{分页面2：游戏}
+		\label{fig2-2}
+	\end{center}
+\end{figure}
+
+页面背景设置为一张图片，图片不重复、覆盖整个页面、居中显示，并且随着页面滚动而固定不动。
+
+使用  mytable  类来居中表格，并设置图片圆角和阴影效果。
+
+使用  mytable2  类来居中显示提示文字，文字颜色为白色，字体样式为斜体，字体家族为一系列无衬线字体。
+
+设计了一个主页图片链接，用户点击可以返回主页。
+
+每个单元格包含一个图片，每个热点区域定义了一个矩形区域，当用户点击这些区域时，会链接到相应的页面,图片分别链接到CSGO、Valorant、Horizon和Minecraft的游戏页面。
+
+
+
+\newpage
+\subsection{页面3：锻炼}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{images/3-1.png}
+		\caption{分页面3：锻炼}
+		\label{fig3-1}
+	\end{center}
+\end{figure}
+
+设置了一个返回主页按钮，为内联块级元素，上边距为20像素，内边距为5像素和10像素。文字颜色为黑色，背景颜色为白色。边框圆角为8像素，无文本装饰，字体大小为14像素，字体加粗。鼠标悬停时，按钮背景颜色变为黑色，文字颜色变为白色，且背景色和文字颜色变化有0.3秒的过渡效果。
+
+以跑步锻炼的图片作为背景，有三个段落，分别介绍了长跑锻炼对心肺功能、腿部力量和体能水平的益处，建议的锻炼频率和时长，以及长跑对心理健康的积极影响。
+
+\newpage
+\subsection{页面4：听歌}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{images/4-1.png}
+		\caption{分页面4：听歌}
+		\label{fig4-1}
+	\end{center}
+\end{figure}
+
+设置了一个返回主页按钮，为内联块级元素，上边距为20像素，内边距为5像素和10像素。文字颜色为黑色，背景颜色为白色。边框圆角为8像素，无文本装饰，字体大小为14像素，字体加粗。鼠标悬停时，按钮背景颜色变为黑色，文字颜色变为白色，且背景色和文字颜色变化有0.3秒的过渡效果。
+
+以跑步锻炼的图片作为背景，有三个段落，分别介绍了长跑锻炼对心肺功能、腿部力量和体能水平的益处，建议的锻炼频率和时长，以及长跑对心理健康的积极影响。
+
+\newpage
+
+\section{网页设计小结}
+
+在Dreamweaver中设计大学生个人网页时，CSS的初步运用、表格的使用、图片的添加、相对路径的使用以及热点的设置是关键技术点。首先，CSS用于控制网页的视觉效果。通过CSS可以设置字体、颜色、布局等，使网页更加美观。在Dreamweaver中，可以利用“CSS设计器”面板直观地编辑CSS，或者直接在代码视图中编写CSS规则。作为初学者我可以从简单的选择器和属性开始，例如设置body的背景色、字体大小和页面边距。表格在展示结构化数据时非常有用。在Dreamweaver中，可以通过插入表格来组织内容。可以设置表格的行数、列数、边框大小等属性，并使用CSS来美化表格，比如添加边框样式、背景色。
+ 
+图片是个人网页中不可或缺的元素，可以展示个人风采或项目成果。在Dreamweaver中，插入图片非常简单，只需拖拽或使用插入菜单。重要的是要注意图片的优化，以减少加载时间。同时，使用alt属性为图片提供描述，增强网页的可访问性。相对路径的使用对于组织网页文件和资源非常重要。相对路径指的是相对于当前文件的位置，这样可以在不同目录间灵活移动文件而不影响链接。例如，如果图片和HTML文件在同一目录下，可以直接使用图片文件名作为路径。热点的设置主要用于图片映射，允许用户点击图片的不同区域跳转到不同的链接。在Dreamweaver中，可以通过“地图”工具创建热点，定义每个热点的形状和链接目标。这对于创建具有交互性的图片导航菜单非常有用。总结来说，Dreamweaver为大学生提供了一套完整的工具来设计个人网页，从CSS的初运用到表格、图片的添加，再到相对路径和热点的设置，这些技术的综合运用可以创建出既美观又功能丰富的个人网页。
+
+\newpage
+
+\section{一点建议}
+
+当我亲自动手制作网页时，我才深刻体会到整个课程内容是相互关联的，之前学到的每一个工具和知识点几乎都在完成这个综合性的大项目中派上了用场。回想起第一次听到课程的最终任务是制作网页时，我内心充满了不安。
+
+因此，我建议在课程中更明确地将教学内容与网页制作这个大作业联系起来，这样做不仅可以提高同学们的学习热情和专注度，还能帮助他们更好地理解每项技术的实际应用。比如在讲解Git的时候，可以强调它的重要性仅次于网页制作本身。虽然“代码版本管理”这个概念听起来可能有些抽象，但如果通过同学们在开发网页过程中频繁修改代码、提交（commit）和推送（push）的具体操作来解释，我相信他们会更加容易理解。
+
+\subsection{计算机基础知识}
+
+计算机基础知识是现代技术世界的基石，它不仅为我们打开了数字世界的大门，还赋予了我们解决问题和创新的能力。掌握这些基础知识，无论是对于个人技能的提升还是职业发展，都具有不可估量的价值。随着技术的不断进步，持续学习计算机基础知识变得越来越重要，它能够帮助我们更好地适应未来社会的需求。
+
+\subsection{文档撰写工具LaTeX}
+
+初学LaTeX时可能会因为其独特的语法和结构而感到困惑，但随着对它的深入理解，我开始意识到LaTeX在排版和文档管理方面的卓越性能，尤其是对于科学和学术写作来说，它的优越性是无可比拟的。尽管起步艰难，但LaTeX的精确控制和自动化能力让我看到了高效学术写作的曙光。
+
+\subsection{编程工具Python}
+
+初学Python时，可能会因为其语法细节和逻辑结构而遇到挑战，但随着实践的深入，我开始领悟到Python的简洁性和灵活性，它在数据处理和自动化任务中展现出的巨大优越性让我深感其价值。尽管起步时困难重重，但Python的强大社区支持和丰富的库资源让我对编程充满了信心，也更加坚定了我继续学习和探索的决心。
+
+\subsection{版本管理软件Git}
+
+初学Git时，可能会对其复杂的版本控制概念和命令行操作感到困惑，但当我开始探索其庞大的开源仓库时，我被Git强大的协作和项目管理能力深深震撼。Git不仅改变了代码的版本控制方式，还促进了全球开发者社区的协作和知识共享，让我对开源文化和团队协作的潜力有了新的认识。
+
+\subsection{网页制作Dreamweaver}
+
+初学Dreamweaver时，可能会因为其众多的功能和复杂的界面布局而感到挑战，但随着对软件的熟悉，我开始欣赏到Dreamweaver在网页设计和开发中所带来的便利和效率。它直观的所见即所得编辑器和强大的代码管理功能，让我对网页设计有了更深的理解和掌握，也让我意识到了它在提高开发工作流程中的巨大优势。
+
+
+
+\end{document}
